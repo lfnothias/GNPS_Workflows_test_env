@@ -1,7 +1,7 @@
 # GNPS_Workflows_test_env
 Repo for running in a Binder server the converter scripts from the Feature-Based Molecular Networking (FBMN) on `GNPS_Workflows`.
 
-## Progenesis QI
+## Progenesis QI files conversion for FBMN on GNPS
 This notebook converts your Progenesis QI files into a FBMN suitable format (MZmine-like). This is a temporary solution until the fixes are incorporated into the next GNPS release. 
 
 ### Run the notebook
