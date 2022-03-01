@@ -7,6 +7,7 @@
 import pandas as pd
 import sys
 import csv
+import os
 
 
 def convert_to_feature_csv(input_filename, output_filename):
@@ -19,7 +20,7 @@ def convert_to_feature_csv(input_filename, output_filename):
 
     # This is for European systems of decimals and quotes.
     except:
-        input_format_for_raw_position = pd.read_csv(input_filename, sep=";", error_bad_lines=False, decimal=",", quoting=csv.QUOTE_ALL)
+        input_format_for_raw_position = pd.read_csv(input_filename, sep=";", error_bad_lines=False, low_memory=False, decimal=",", quoting=csv.QUOTE_ALL)
         print('Reading semicolon separated input file with comma decimal separator ')
     
     #Check requirements for the table
@@ -153,6 +154,7 @@ def convert_to_feature_csv(input_filename, output_filename):
 
 #Converts MSP to MGF
 def convert_mgf(input_msp, output_mgf, compound_to_scan_mapping):
+    os.remove(output_mgf)
     output_filename = open(output_mgf, "w")
     read_name = False
 
@@ -171,8 +173,8 @@ def convert_mgf(input_msp, output_mgf, compound_to_scan_mapping):
             comment = line.rstrip().replace("Comment: ", "FILENAME=")
             ret_time = line.rstrip().replace("Comment: ", "").replace("_", "__")
             sep = '__'
-            ret_time = ret_time.split(sep, 1)[0]
-
+            ret_time = ret_time.split(sep, 1)[0].replace(",", ".")
+                  
             if compound_name in observed_compound_names:
                 #print("skipping repeated feature")
                 continue
@@ -215,6 +217,7 @@ def convert_mgf(input_msp, output_mgf, compound_to_scan_mapping):
                     output_filename.write(str(charge)+"\n")
 
             output_filename.write(str(comment)+"\n")
+            ret_time = ret_time.replace(",", ".")
             output_filename.write("RTINMINUTES="+str(ret_time)+"\n")
             for peak in peaks:
                 output_filename.write("%f %f\n" % (peak[0], peak[1]))
