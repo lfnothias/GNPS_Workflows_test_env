@@ -154,7 +154,10 @@ def convert_to_feature_csv(input_filename, output_filename):
 
 #Converts MSP to MGF
 def convert_mgf(input_msp, output_mgf, compound_to_scan_mapping):
-    os.remove(output_mgf)
+    try:
+        os.remove(output_mgf)
+    except:
+        pass
     output_filename = open(output_mgf, "w")
     read_name = False
 
