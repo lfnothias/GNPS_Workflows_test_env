@@ -7,6 +7,8 @@ This notebook converts your Progenesis QI files into a FBMN suitable format (MZm
 ### Run the notebook
 Click on [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lfnothias/GNPS_Workflows_test_env/HEAD?labpath=FBMN_Progenesis_QI_file_converter.ipynb) to run the notebook.
 
+Binder with GESIS server [LATEST] -> [![Binder with GESIS](https://mybinder.org/badge_logo.svg)](https://notebooks.gesis.org/binder/v2/gh/lfnothias/GNPS_Workflows_test_env/HEAD?labpath=FBMN_Progenesis_QI_file_converter.ipynb)
+
 ### Instructions
 
 - Step 1 - Open the navigation panel in Jupyter lab environment.
