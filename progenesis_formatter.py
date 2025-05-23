@@ -20,7 +20,7 @@ def convert_to_feature_csv(input_filename, output_filename):
 
     # This is for European systems of decimals and quotes.
     except:
-        input_format_for_raw_position = pd.read_csv(input_filename, sep=";", error_bad_lines=False, low_memory=False, decimal=",", quoting=csv.QUOTE_ALL)
+        input_format_for_raw_position = pd.read_csv(input_filename, sep=";", on_bad_lines='skip', low_memory=False, decimal=",", quoting=csv.QUOTE_ALL)
         print('Reading semicolon separated input file with comma decimal separator ')
     
     #Check requirements for the table
