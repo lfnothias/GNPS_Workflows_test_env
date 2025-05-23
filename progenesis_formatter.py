@@ -14,13 +14,15 @@ def convert_to_feature_csv(input_filename, output_filename):
     
     # This works for version v2.4 and standards encoding and quotes.
     try:
-        input_format_for_raw_position = pd.read_csv(input_filename, sep=",", skiprows=0, low_memory=False)
+        input_format_for_raw_position = pd.read_csv(input_filename, sep=",", skiprows=0, low_memory=False, on_bad_lines='skip')
+
         print('Reading comma separated file with dot decimal separator')
         input_format_for_raw_position.columns = input_format_for_raw_position.columns.astype(str)
 
     # This is for European systems of decimals and quotes.
     except:
         input_format_for_raw_position = pd.read_csv(input_filename, sep=";", on_bad_lines='skip', low_memory=False, decimal=",", quoting=csv.QUOTE_ALL)
+
         print('Reading semicolon separated input file with comma decimal separator ')
     
     #Check requirements for the table
